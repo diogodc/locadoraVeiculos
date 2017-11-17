@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./paginaInicial.xhtml">
+
+            <ui:define name="content">
+                <h:form id="formCadastroCarro">
+
+                    <h:messages 
+                        globalOnly="true"    
+                        showDetail="true"
+                        infoStyle="color: silver"
+                        errorStyle="color: red">
+                    </h:messages> 
+
+                    <h:panelGrid columns="3" border="0" cellpadding="3" width="500px">
+
+                        <h:outputLabel value="Placa: " />
+                        <h:inputText id="placa" value="#{carroBean.carro.placa}" required="true"
+                                     requiredMessage="Campo Obrigatório" />  
+                        <h:message class="mensagens" for="placa" showSummary="false" />    
+
+
+                        <h:outputLabel value="Descricao: " />
+                        <h:inputText style="width: 200px" id="descricao" value="#{carroBean.carro.descricao}" required="true"
+                                     requiredMessage="Campo Obrigatório" />  
+                        <h:message class="mensagens" for="descricao" showSummary="false" />    
+
+
+                        <h:outputLabel value="Ano: " />
+                        <h:inputText id="ano" value="#{carroBean.carro.ano}" required="true"
+                                     requiredMessage="Campo Obrigatório" />  
+                        <h:message class="mensagens" for="ano" showSummary="false" />    
+
+
+                        <h:outputLabel value="Km Atual: " />
+                        <h:inputText id="km_atual" value="#{carroBean.carro.km_atual}" required="true"
+                                     requiredMessage="Campo Obrigatório" />  
+                        <h:message class="mensagens" for="km_atual" showSummary="false" />    
+  
+
+                        <h:outputLabel value="Valor Diaria: " />
+                        <h:inputText id="vlr_diaria" value="#{carroBean.carro.vlr_diaria}" required="true"
+                                     requiredMessage="Campo Obrigatório" />  
+                        <h:message class="mensagens" for="vlr_diaria" showSummary="false" />    
+      
+
+                        <h:outputLabel value="Diretorio da Imagem: " />
+                        <h:inputText id="img" value="#{carroBean.carro.img}" required="false"
+                                     requiredMessage="Campo Obrigatório" />  
+                        <h:message for="img" showSummary="false" />    
+
+                        <h:outputLabel value="Observação: " />
+                        <h:inputTextarea style="width: 200px" id="obs" value="#{carroBean.carro.obs}" required="false"
+                                     requiredMessage="Campo Obrigatório" />  
+                        <h:message for="obs" showSummary="false" />    
+
+                    </h:panelGrid>    
+
+                    <h:commandButton class="btform" value="Cadastrar" action="#{carroBean.cadastrarCarroManage()}" immediate="false" />
+                    <h:commandButton class="btform" value="Cancelar"  action="cadastroCarro.xhtml" immediate="true" />
+
+                </h:form> 
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

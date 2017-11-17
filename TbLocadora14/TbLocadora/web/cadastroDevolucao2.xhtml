@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./paginaInicial.xhtml">
+
+
+            <ui:define name="content">
+                <h:form id="formCadastroDevolucao2">
+<p:growl id="growl" showDetail="true"/> 
+
+                    <h:panelGrid columns="2" border="0">
+                        <h:outputLabel value="id_aluguel: " />
+                        <h:inputText id="id_aluguel" value="#{aluguelBean.id_aluguel}" required="false" />
+
+                        <h:outputLabel value="vlr_aluguel: " />
+                        <h:inputText id="vlr_aluguel" value="#{aluguelBean.vlr_aluguel}" />
+
+
+                        <h:outputLabel value="Data final da devolução: " />
+                        <h:inputText id="dtfim" value="#{aluguelBean.aluguel.dt_fim}" required="true"
+                                     requiredMessage="Obrigatório preencher este campo" >  
+                            <f:convertDateTime pattern="yyyy-MM-dd" timeZone="America/Sao_Paulo"/>  
+                        </h:inputText>
+
+                        <h:outputLabel value="vlr_taxa: " />
+                        <h:inputText id="vlrtaxa" value="#{aluguelBean.aluguel.vlr_taxa}" required="true"
+                                     requiredMessage="Obrigatório preencher este campo" />  
+
+                        <h:outputLabel value="Forma de pagamento" />
+                        <h:selectOneMenu value="#{aluguelBean.pagamento.forma_pg}">
+                            <f:selectItem itemValue="1" itemLabel="Dinheiro" />
+                            <f:selectItem itemValue="2" itemLabel="Boleto" />
+                            <f:selectItem itemValue="3" itemLabel="Cartao" />
+                        </h:selectOneMenu>
+
+
+                    </h:panelGrid>
+                    <h:message for="dtfim" showSummary="false" />  
+                    <h:message for="vlrtaxa" showSummary="false" />  
+                    <h:commandButton class="btform" style="margin-left: 10px" value="Registrar Devolução" action="#{aluguelBean.cadastrarDevolucaoManage()}" immediate="false" />
+                    <h:commandButton class="btform" style="margin-left: 10px" value="Cancelar"  action="cadastroDevolucao" immediate="true" />
+
+                </h:form> 
+            </ui:define>
+
+
+        </ui:composition>
+
+    </body>
+</html>

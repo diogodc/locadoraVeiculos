@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./paginaInicial.xhtml">
+
+
+            <ui:define name="content">
+                <h:form id="formCadastroDevolucao">
+<p:growl id="growl" showDetail="true"/> 
+
+
+            <h:dataTable value="#{aluguelBean.listaAluguelManage}" var="objeto" border="1">
+                <h:column>
+                    <f:facet name="header">id_aluguel
+                    </f:facet>
+                    #{objeto.id_aluguel}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputLabel value="Cliente" />
+                    </f:facet>
+                    <h:outputText value="#{clienteBean.pesquisarContato(objeto.id_cliente).nome}" />
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputLabel value="id_carro" />
+                    </f:facet>
+                    <h:outputText value="#{objeto.id_carro}" />
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputLabel value="dt_devolucao" />
+                    </f:facet>
+                    <h:outputText value="#{objeto.dt_devolucao}" />
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputLabel value="vlr_aluguel" />
+                    </f:facet>
+                    <h:outputText value="#{objeto.vlr_aluguel}" />
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+
+                    </f:facet>
+                    <h:commandLink value="Devolver" action="#{aluguelBean.escolherAluguel(objeto)}" />
+                </h:column>
+
+
+            </h:dataTable>
+
+            <br/>
+            <!--<h:commandButton class="btform" style="margin-left: 230px" value="Cancelar"  action="cadastroDevolucao.xhtml" immediate="true" />-->
+
+
+
+
+
+        </h:form> 
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./paginaInicial.xhtml">
+
+            <ui:define name="content">
+                <h:form id="formCadastroAluguel">
+                    <p:growl id="growl" showDetail="true"/>  
+                    <div class="alugueltab">
+                        <h:dataTable value="#{carroBean.listaCarrosManage}" var="objeto" border="1" >
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputLabel value="id_carro" />
+                                </f:facet>
+                                <h:outputText value="#{objeto.id_carro}" />
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputLabel value="descricao" />
+                                </f:facet>
+                                <h:outputText value="#{objeto.descricao}" />
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputLabel value="ano" />
+                                </f:facet>
+                                <h:outputText value="#{objeto.ano}" />
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputLabel value="vlr_diaria" />
+                                </f:facet>
+                                <h:outputText value="#{objeto.vlr_diaria}" />
+                            </h:column>
+                        </h:dataTable>
+
+                    </div><div class="aluguelform">
+                        <h:panelGrid columns="2" border="0" >
+                            <h:outputLabel value="Id Carro: " />
+                            <h:inputText id="carro" value="#{aluguelBean.aluguel.id_carro}" required="true"
+                                         requiredMessage="Carro: campo obrigatório"/>                               
+                            
+                            <h:outputLabel value="Cliente: " />
+                            <h:selectOneMenu id="selCliente" value="#{aluguelBean.aluguel.id_cliente}" >
+                                <f:selectItem itemLabel="Selecione" />    
+                                <f:selectItems var="cliente" value="#{clienteBean.listaClienteManage}" itemValue="#{cliente.id_cliente}" itemLabel="#{cliente.nome}"/>
+                                <f:ajax render="cliDetalhes"/>
+                            </h:selectOneMenu>  
+
+                            <h:outputLabel value="Data início: " />
+                            <h:inputText id="dtInicio" value="#{aluguelBean.aluguel.dt_inicio}" required="true"
+                                         requiredMessage="Data início: campo obrigatório">  
+                                <f:convertDateTime  pattern="yyyy-MM-dd" timeZone="America/Sao_Paulo"/>  
+                            </h:inputText>   
+                            <h:outputLabel value="Data devolução: " />
+                            <h:inputText id="dtDevolucao" value="#{aluguelBean.aluguel.dt_devolucao}" required="true"
+                                         requiredMessage="Data devolução: campo obrigatório" >  
+                                <f:convertDateTime pattern="yyyy-MM-dd" timeZone="America/Sao_Paulo"/>  
+                            </h:inputText> 
+                            
+                            <h:outputLabel value="Forma de pagamento" />
+                            <h:selectOneMenu value="#{aluguelBean.pagamento.forma_pg}">
+                                <f:selectItem itemValue="1" itemLabel="Dinheiro" />
+                                <f:selectItem itemValue="2" itemLabel="Boleto" />
+                                <f:selectItem itemValue="3" itemLabel="Cartao" />
+                            </h:selectOneMenu>
+                            <br/>
+                        </h:panelGrid>    
+                        <h:commandButton class="btform" style="margin-left:10%;" value="Cadastrar" action="#{aluguelBean.cadastrarAluguelManage()}" immediate="false" />
+                        <h:commandButton class="btform" value="Cancelar"  action="cadastroAluguel.xhtml" immediate="true" />
+                    </div>
+                    <div class="aluguelform2">
+                        <h:panelGrid id="cliDetalhes" columns="1" border="0" >                            
+                            <h:outputLabel escape="false" value="#{clienteBean.pesquisarContato(aluguelBean.aluguel.id_cliente)}"  />
+                        </h:panelGrid>
+                    </div>
+                </h:form>
+            </ui:define>
+
+
+        </ui:composition>
+
+    </body>
+</html>

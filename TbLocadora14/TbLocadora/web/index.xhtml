@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <link href="css/maincss.css" rel="stylesheet" type="text/css" />
+    <h:head>
+        <title>TbLocadora</title>
+    </h:head>
+    <h:body>
+        
+            <h:form id="formLogin">
+                <!--<div class="csslogin">-->
+                <p:growl id="growl" /> 
+                <center><h1>TbLocadora</h1></center>
+                <h:panelGrid class="panelLogin" columns="2" border="0" >
+                    <h:outputLabel value="Login: " />
+                    <h:inputText class="iptext" id="login" value="#{usuarioBean.login}" required="true"
+                                 requiredMessage="Obrigatório preencher o nome!"/>  
+                        
+
+                    <h:outputLabel value="Senha: "/>
+                    <h:inputSecret class="iptext" id="senha" value="#{usuarioBean.senha}" required="true" 
+                                   requiredMessage="Obrigatório preencher a senha!"
+                                   /> 
+                   
+
+                </h:panelGrid>
+                <h:commandButton class="btlogin" value="Enviar" action="#{usuarioBean.valida()}" immediate="false" />
+            <!--</div>-->
+            </h:form> 
+        
+    </h:body>
+</html>
+

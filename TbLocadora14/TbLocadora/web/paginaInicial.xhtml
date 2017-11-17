@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <link href="css/maincss.css" rel="stylesheet" type="text/css" />
+        <title>TbLocadora</title>
+    </h:head>
+
+    <h:body>
+
+        <div id="top">
+            
+            <ui:insert name="top">
+                <div id='cssmenu'>
+                <ul>
+                    <li class='active'><a href='paginaInicial.xhtml'>Home</a></li>
+                    <li><a href='cadastroCliente.xhtml'>Clientes</a></li>
+                    <li><a href='cadastroCarro.xhtml'>Carros</a></li>
+                    <li><a href='cadastroAluguel.xhtml'>Aluguel</a></li>
+                    <li><a href='cadastroDevolucao.xhtml'>Devolucao</a></li>
+                    <li><a href='index.xhtml'>Logoff</a></li>
+                </ul>
+            </div>
+            </ui:insert>
+        </div>
+
+        <div id="content" class="center_content">
+            <ui:insert name="content">
+                <p:growl id="growl" showDetail="true"/> 
+                
+            </ui:insert>
+        </div>
+
+        <div id="bottom">
+            <ui:insert name="bottom"></ui:insert>
+        </div>
+
+    </h:body>
+
+</html>

@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<link href="css/maincss.css" rel="stylesheet" type="text/css" />
+    <body>
+
+        <ui:composition template="./paginaInicial.xhtml">
+
+            <ui:define name="content">
+                <h:form id="formCadastroCliente">
+<p:growl id="growl" showDetail="true"/> 
+
+                    <h:panelGrid columns="3" border="0" cellpadding="3" width="630px">
+
+                        <h:outputLabel value="cpf/cnpj: " />
+                        <h:inputText id="cpf_cnpj" value="#{clienteBean.cliente.cpf_cnpj}" required="true"
+                                     requiredMessage="Campo Obrigatório" />  
+                        <h:message class="mensagens" for="cpf_cnpj" showSummary="false" />    
+
+                        <h:outputLabel value="RG/IE: " />
+                        <h:inputText id="rg_ie" value="#{clienteBean.cliente.rg_ie}" required="true"
+                                     requiredMessage="Campo Obrigatório" />  
+                        <h:message class="mensagens" for="rg_ie" showSummary="false" />    
+                      
+                        <h:outputLabel value="Nome: " />
+                        <h:inputText id="nome" style="width: 350px" value="#{clienteBean.cliente.nome}" required="true"
+                                     requiredMessage="Campo Obrigatório" />  
+                        <h:message class="mensagens" for="nome" showSummary="false" />    
+
+                        <h:outputLabel value="Telefone:" />
+                        <h:inputText id="telefone" value="#{clienteBean.cliente.telefone}" required="true"
+                                     requiredMessage="Campo Obrigatório" />  
+                        <h:message class="mensagens" for="telefone" showSummary="false" />    
+
+                        <h:outputLabel value="Endereco: " />
+                        <h:inputText id="endereco" style="width: 350px" value="#{clienteBean.cliente.endereco}" required="true"
+                                     requiredMessage="Campo Obrigatório" />  
+                        <h:message class="mensagens" for="endereco" showSummary="false" />    
+
+                        <h:outputLabel value="Observações:" />
+                        <h:inputTextarea id="obs" style="width: 350px" value="#{clienteBean.cliente.obs}" required="false"/>    
+
+
+
+                    </h:panelGrid>    
+                
+                        <h:commandButton class="btform" value="Cadastrar" action="#{clienteBean.cadastrarClienteManage()}" immediate="false" />
+                        <h:commandButton class="btform" value="Cancelar"  action="cadastroCliente.xhtml"  immediate="true" />
+
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
