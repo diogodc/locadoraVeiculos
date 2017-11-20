@@ -16,7 +16,7 @@ public class Aluguel {
     private double vlr_taxa;    // valor adicionais de avarias que podem ter no ato da devolução.
     private double vlr_total;   // valor final do aluguel (valor_aluguel + vlr_taxa).
 
-    /////////////////////////////////////////////////
+   
     public int getId_aluguel() {
         return id_aluguel;
     }
