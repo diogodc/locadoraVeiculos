@@ -28,13 +28,13 @@ public class AluguelDAO {
         try {
             PreparedStatement stmt = DAOBD.conn.prepareStatement(
                     "SELECT * FROM aluguel WHERE dt_fim is null");
-            //stmt.setLong(1, id_aluguel);
+            //stmt.setLong(1, id_aluguel); // anitgo de teste
 
             ResultSet rset = stmt.executeQuery();
 
             //aluguelSelect = new Aluguel();
 
-            while (rset.next()) {  // antigo if
+            while (rset.next()) {  
 
                 aluguelSelect = new Aluguel();
                 aluguelSelect.setId_aluguel(rset.getInt("id_aluguel"));
@@ -70,6 +70,7 @@ public class AluguelDAO {
     } // listar
 
     /////////////////////////////////////////////
+    
     public int cadastrarAluguelDAO(Aluguel aluguel) throws SQLException {
 
         Aluguel aluguelSelect = null;
@@ -204,14 +205,12 @@ public class AluguelDAO {
 
 
 
-
         } catch (SQLException ex) {
             //Logger.getLogger(UsuarioManageBean.class.getName()).log(Level.SEVERE, null, ex);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
                     "catch falha no cadastro!!!", "."));
             return false;
         } // end catch   
-
 
 
 
