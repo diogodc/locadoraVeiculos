@@ -34,7 +34,7 @@ public class CarroDAO {
                 stmt.close();
             } // end if
             else {
-                System.out.println("Falha no SELECT !!!!!!");
+                System.out.println("Falha no SELECT");
                 stmt.close();
                 carroSelect.setId_carro(-1);   // igual a -1 quer dizer que não achou o cadastrado.
             }  // end else
